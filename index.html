@@ -9,7 +9,7 @@
   <style>
     body {
       margin: 0;
-      background-color: black;
+      background-color: transparent; /* Sin fondo arriba */
       color: white;
     }
     .active-tab svg,
@@ -17,26 +17,28 @@
       color: #a855f7 !important;
       stroke: #a855f7 !important;
     }
-  * {
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-}
-
+    * {
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+    nav {
+      background-color: black; /* Fondo solo del menú */
+    }
   </style>
 </head>
 <body>
 
-  <nav class="fixed bottom-0 left-0 right-0 bg-black border-t border-gray-700 flex justify-around p-2 text-white text-[10px]">
+  <nav class="fixed bottom-0 left-0 right-0 border-t border-gray-700 flex justify-around p-2 text-white text-[10px]">
     
     <button onclick="setActive(this, 'go:perfil')" class="flex flex-col items-center hover:opacity-90">
       <i data-lucide="home" class="w-5 h-5"></i>
       <span>Inicio</span>
     </button>
 
-    <a href="https://nimeapp.github.io/Pr-ximamente/" class="flex flex-col items-center hover:opacity-90">
-  <i data-lucide="play-square" class="w-5 h-5"></i>
-  <span>Próximamente</span>
-</a>
+    <button onclick="setActive(this, 'go:proximamente')" class="flex flex-col items-center hover:opacity-90">
+      <i data-lucide="play-square" class="w-5 h-5"></i>
+      <span>Próximamente</span>
+    </button>
 
     <button onclick="setActive(this, 'go:favoritos')" class="flex flex-col items-center hover:opacity-90">
       <i data-lucide="heart" class="w-5 h-5"></i>
@@ -64,15 +66,14 @@
       window.location.href = url;
     }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a').forEach(el => {
-      const url = el.getAttribute('href');
-      el.removeAttribute('href');
-      el.style.cursor = 'pointer';
-      el.onclick = () => window.location.href = url;
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a').forEach(el => {
+        const url = el.getAttribute('href');
+        el.removeAttribute('href');
+        el.style.cursor = 'pointer';
+        el.onclick = () => window.location.href = url;
+      });
     });
-  });
-
   </script>
 
 </body>
